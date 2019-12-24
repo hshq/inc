@@ -1,17 +1,25 @@
 Inc: an incrementally developed compiler
 =======================================
 
-Setup instructions for Ubuntu x86
----------------------------------
+The compiler can now compile itself.
+Do `make boot` to create a standalone repl.
+(The booted compiler supports a smaller range of fixnums due to double shifting.)
 
-- [Install Petite Chez Scheme](http://blog.acfoltzer.net/2011/01/installing-petite-chez-scheme-on-ubuntu/)
-- `$ sudo apt-get install libc6-dev-i386`
+The tests are now loaded in `compiler-tests.scm`.
 
-Quick instructions to run all tests
------------------------------------
-    $ petite compiler.scm
-      > (compile-lib)     ;; just once
-      > (test-all)        ;; run all the tests
+To run all the tests, do `make test` at a shell.
+The tests can run for both the hosted and booted compiler.
+By toggling `enable-boot-tests` in `tests-driver.scm`,
+the booted compiler can be included or excluded from the tests.
+
+### possible TODOs
+
+- [ ] generate code for loaded definitions in advance, as for lib primitives
+
+- [ ] understand why the booted compiler runs out of memory compiling itself,
+      and optimize accordingly
+
+- [ ] update the rust runtime for the booted compiler
 
 Full original instructions
 --------------------------
